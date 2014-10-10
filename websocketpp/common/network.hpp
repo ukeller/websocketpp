@@ -36,6 +36,15 @@
     #include <netinet/in.h>
 #endif
 
+#ifdef htonll
+#undef htonll
+#endif
+
+#ifdef ntohll
+#undef ntohll
+#endif
+
+
 namespace websocketpp {
 namespace lib {
 namespace net {
@@ -49,6 +58,8 @@ inline bool is_little_endian() {
 #define TYP_INIT 0
 #define TYP_SMLE 1
 #define TYP_BIGE 2
+
+
 
 inline uint64_t htonll(uint64_t src) {
     static int typ = TYP_INIT;
@@ -78,5 +89,8 @@ inline uint64_t ntohll(uint64_t src) {
 } // net
 } // lib
 } // websocketpp
+
+
+
 
 #endif // WEBSOCKETPP_COMMON_NETWORK_HPP
